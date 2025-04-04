@@ -1,19 +1,17 @@
 services:
   se7e-tools:
-    image: se7e-tools:latest
+    container_name: se7e-tools
+    build: .
+    ports:
+      - "3000:3000"
     networks:
       - portainer
-    deploy:
-      mode: replicated
-      replicas: 1
-      restart_policy:
-        condition: on-failure
-      resources:
-        limits:
-          cpus: "1.0"
-          memory: 1GB
-        reservations:
-          memory: 512MB
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.se7etools.rule=Host(`se7e-tools.assessoriase7e.cloud`)"
+      - "traefik.http.routers.se7etools.entrypoints=websecure"
+      - "traefik.http.routers.se7etools.tls.certresolver=myresolver"
+      - "traefik.http.services.se7etools.loadbalancer.server.port=3000"
     environment:
       - NODE_ENV=production
       - PUPPETEER_SKIP_DOWNLOAD=true
