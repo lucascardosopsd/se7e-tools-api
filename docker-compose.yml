@@ -4,8 +4,6 @@ services:
     build: .
     ports:
       - "3000:3000"
-    networks:
-      - portainer
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.se7etools.rule=(Host(`se7e-tools.assessoriase7e.cloud`))"
@@ -18,7 +16,3 @@ services:
     volumes:
       - .:/app
       - /app/node_modules
-
-networks:
-  portainer:
-    external: true
