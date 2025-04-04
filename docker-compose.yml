@@ -1,0 +1,12 @@
+services:
+  app:
+    container_name: se7e-tools
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - PUPPETEER_SKIP_DOWNLOAD=true
+    volumes:
+      - .:/app
+      - /app/node_modules
