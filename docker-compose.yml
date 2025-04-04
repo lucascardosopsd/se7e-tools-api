@@ -10,7 +10,7 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.se7etools.rule=Host(`se7e-tools.assessoriase7e.cloud`)"
       - "traefik.http.routers.se7etools.entrypoints=websecure"
-      - "traefik.http.routers.se7etools.tls.certresolver=myresolver"
+      - "traefik.http.routers.se7etools.tls.certresolver=letsencryptresolver"
       - "traefik.http.services.se7etools.loadbalancer.server.port=3000"
     environment:
       - NODE_ENV=production
