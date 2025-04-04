@@ -1,9 +1,6 @@
 services:
   se7e-tools:
-    container_name: se7e-tools
-    build: .
-    ports:
-      - "3000:3000"
+    image: se7e-tools:latest
     networks:
       - portainer
     deploy:
