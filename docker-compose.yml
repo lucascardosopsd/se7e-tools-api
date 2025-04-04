@@ -20,5 +20,5 @@ services:
       - /app/node_modules
 
 networks:
-  portainer:
+  portainer_network:
     external: true
